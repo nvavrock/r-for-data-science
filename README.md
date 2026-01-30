@@ -1,28 +1,43 @@
-# R for Data Science (R4DS): Systematic Review & Iterative Refinement
+# R for Data Science: Technical Refinement & Architectural Hardening
 
-## Project Philosophy: From Syntax to Mastery
-This repository documents a secondary, deep-dive audit of the **R for Data Science (R4DS)** curriculum by **Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund**. While the initial engagement focused on functional proficiency, this iterative review prioritizes architectural rigor, technical accessibility, and robust data handling.
+## The Vision: Beyond Syntax
+This repository is an intensive **expansion and refinement** of the curriculum presented in **"R for Data Science (2e)" by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund**. 
 
----
-
-## Global Technical Standards
-Following the principles outlined in **Hadley’s book**, the following standards are strictly applied:
-
-* **Data Integrity:** All visualizations must handle missing values through explicit pre-processing to ensure statistical validity.
-* **Universal Design:** Visual outputs utilize the **Okabe-Ito palette**, programmatically modified to remove low-contrast colors like yellow (`#F0E442`).
-* **Architectural Rigor:** Custom `theme()` adjustments are placed last to ensure absolute black (`#000000`) typography.
-* **Filesystem Automation:** Scripts include `dir.exists()` and `file.copy()` logic to automate data migration.
+While the source text provides the foundational "how-to," this project implements a "production-ready" layer—transforming instructional exercises into hardened, defensive, and accessible data engineering pipelines.
 
 ---
 
-## Repository Architecture
-```text
-r_for_data_science/
-├── ch1_penguin_dimensions/
-│   ├── ch1_penguin_dimensions_viz.R    # Viz & migration logic
-│   ├── ch1_README.md                   # Tech specification
-│   └── penguins_data.csv               # Exported artifact
-├── ch2_workflows/
-│   ├── ch2_workflows.R                 # Audit declaration
-│   └── ch2_README.md                   # Operational standards
-└── README.md                           # Global overview
+## Global Engineering Standards
+Every module in this repository is built to exceed standard instructional benchmarks through four "Refinement Pillars":
+
+1.  **Modern Syntax (Native Pipe `|>`):** Global transition from `magrittr` to native R piping to reduce overhead and future-proof the codebase.
+2.  **Universal Design (Accessibility):** All visualizations are engineered using CVD-safe palettes (modified Okabe-Ito) and high-contrast typography (#000000).
+3.  **Defensive Programming:** Implementation of explicit data-integrity checks (NA filtering) and automated filesystem verification (`dir.exists`) to prevent silent failures.
+4.  **Reproducibility Hardening:** Strict "No-Persistence" workspace policy to ensure all results are generated programmatically from raw state.
+
+---
+
+## Repository Roadmap
+
+### [Ch 1: Visualization Refinement](./ch1_penguin_dimensions/)
+* **Objective:** Expanding the `palmerpenguins` analysis.
+* **Key Improvement:** Implemented disaggregated regression layers to address Simpson’s Paradox and automated CSV serialization logic.
+
+### [Ch 2: Environmental Hardening](./ch2_workflows/)
+* **Objective:** Establishing Operational Standards.
+* **Key Improvement:** Hard-coded IDE configurations for native piping and established a POSIX-compliant naming architecture.
+
+### [Ch 3: The Flight Performance Engine](./ch3_data_transformation/)
+* **Objective:** Engineering high-integrity metrics from `nycflights13`.
+* **Key Improvement:** Developed a normalized "Time Recovery Index" and a defensive pipeline for carrier-level performance auditing.
+
+---
+
+## Technical Stack
+* **Language:** R 4.x+
+* **Framework:** Tidyverse (Extended)
+* **Standards:** MIT License with full attribution to original authors.
+
+---
+**Lead Engineer:** Nate Vavrock  
+**Source:** [R for Data Science, 2nd Edition](https://r4ds.hadley.nz/)

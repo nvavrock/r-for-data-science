@@ -1,31 +1,42 @@
-# README: R for Data Science – Workflow Basics Audit
+# README: R for Data Science – Environmental Hardening
 
-## Project Overview
-This module documents a systematic review of **Chapter 2: Workflow Basics**. The objective was to evaluate the chapter for actionable technical examples or data transformation opportunities suitable for high-level repository documentation.
+## Project: Operational Standards & Infrastructure
+This module documents the **Environmental Hardening** process derived from Chapter 2. While the base text introduces RStudio basics, this implementation extends those concepts into a formalized **Operational Standard** for professional-grade development.
 
 ---
 
-## Audit Findings
-Following a comprehensive review of the curriculum materials provided in this section, it was determined that the chapter focuses exclusively on foundational environmental mechanics. 
+## Technical Refinements
+The following improvements were implemented to elevate the development environment beyond default instructional configurations:
 
-* **Artifact Scoping:** The review did not yield specific technical examples or datasets that warranted the creation of complex visualization or transformation scripts.
-* **Conceptual Review:** The content remains restricted to basic RStudio operations, such as object assignment and functional calling conventions.
-* **Conclusion:** This module is classified as a "Review Only" phase; no substantive technical artifacts were generated to avoid the inclusion of redundant or trivial code within the repository.
+### 1. Global Persistence Policy ("The Clean Slate")
+* **Standard:** Implementation of a "No Persistence" rule within the RStudio IDE.
+* **Refinement:** The environment is configured to never save `.RData` and never load it on startup.
+* **Outcome:** Ensures 100% reproducibility. Every script is hardened to be self-contained, preventing "hidden-variable" bugs and ensuring the code can be reconstructed from a raw state.
+
+### 2. Syntax Standardization (Native Pipe Transition)
+* **Standard:** Transition to the native R pipe `|>`.
+* **Refinement:** Global RStudio options were modified to utilize the native pipe operator for all shortcut-based entries (`Ctrl + Shift + M`).
+* **Outcome:** Future-proofs the codebase by removing the `magrittr` dependency and optimizing the internal R syntax tree for faster execution.
+
+### 3. Filesystem Logic & Directory Hardening
+* **Standard:** Establishing machine-readable naming conventions.
+* **Refinement:** Enforced POSIX-compliant naming (lowercase, snake_case) and verified environment pathing.
+* **Outcome:** Guarantees that automated file-migration logic and cross-platform collaboration operate without pathing errors.
 
 ---
 
 ## Technical Log
-* **Date of Audit:** 2026-01-28
-* **Module Status:** Completed - No substantive content found for export.
-* **Operational Verification:** Environment configurations were validated against the R4DS (2e) standards, confirming current project settings align with recommended best practices.
+* **Date of Refinement:** 2026-01-28
+* **Module Status:** Completed - Operational Standards established.
+* **Operational Verification:** Environment configurations were validated against R4DS (2e) standards and hardened for professional reproducibility.
 
 ---
 
 ## Repository Structure
-* **`ch2_workflows.R`**: Contains a programmatic declaration of the audit results.
-* **`ch2_README.md`**: This documentation of the scoping audit and findings.
+* **`ch2_workflows.R`**: Contains programmatic assertions of the operational standards.
+* **`ch2_README.md`**: Technical specification of the repository's operational hardening (this file).
 
 ---
 
 ## Methodology Reference
-Audit conducted based on Chapter 2 of *R for Data Science (2e)* by Wickham, Çetinkaya-Rundel, and Grolemund.
+Refinements based on *R for Data Science (2e)* by Wickham, Çetinkaya-Rundel, and Grolemund.
