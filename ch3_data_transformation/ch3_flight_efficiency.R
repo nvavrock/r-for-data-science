@@ -1,28 +1,56 @@
+# ==============================================================================
+# PROJECT: R for Data Science Technical Refinement
+# MODULE:  Chapter 3 - Data Transformation (Flight Performance Engine)
+# AUTHOR:  Nate Vavrock
+# LICENSE: MIT License (c) 2026 Nate Vavrock. See root LICENSE for terms.
+# SOURCE:  Derived from foundational logic by Wickham et al. (R4DS 2e)
+# ==============================================================================
+
 library(nycflights13)
 library(tidyverse)
 
-# Mastery Audit: Efficiency by Carrier
+# ------------------------------------------------------------------------------
+# DATA EXTRACTION & INTEGRITY CHECK
+# Standard: Explicit handling of missing values (NAs) to prevent propagation 
+# in statistical summaries.
+# ------------------------------------------------------------------------------
 efficiency_audit <- flights |> 
-  # 1. Integrity Filter: Remove rows with missing delay or air_time data
-  filter(!is.na(dep_delay), !is.na(arr_delay), !is.na(air_time)) |> 
-  
-  # 2. Transformation: Calculate 'gain' (time recovered in air)
-  mutate(
-    gain = dep_delay - arr_delay,
-    hours = air_time / 60,
-    gain_per_hour = gain / hours
+  filter(
+    !is.na(dep_delay), 
+    !is.na(arr_delay), 
+    !is.na(air_time)
   ) |> 
   
-  # 3. Aggregation: Summarize performance by carrier
-  group_by(carrier) |> 
+  # ------------------------------------------------------------------------------
+# FEATURE ENGINEERING: NORMALIZED PERFORMANCE METRICS
+# Logic: 'gain' measures the delta between departure and arrival delays.
+# Normalization: gain_per_hour accounts for flight duration variance.
+# ------------------------------------------------------------------------------
+mutate(
+  gain = dep_delay - arr_delay,
+  hours = air_time / 60,
+  gain_per_hour = gain / hours
+) |> 
+  
+  # ------------------------------------------------------------------------------
+# AGGREGATION: CARRIER-LEVEL PERFORMANCE BENCHMARKING
+# Standard: Grouped summarization using native pipe architectural transformation.
+# ------------------------------------------------------------------------------
+group_by(carrier) |> 
   summarize(
-    avg_gain = mean(gain),
+    avg_gain      = mean(gain),
     total_flights = n(),
-    .groups = "drop"
+    .groups       = "drop"
   ) |> 
   
-  # 4. Refinement: Sort by the most efficient 'recoverers'
-  arrange(desc(avg_gain))
+  # ------------------------------------------------------------------------------
+# OPTIMIZATION: PERFORMANCE RANKING
+# Logic: Sort in descending order of average time recovery efficiency.
+# ------------------------------------------------------------------------------
+arrange(desc(avg_gain))
 
-# Export the mastery artifact
+# ------------------------------------------------------------------------------
+# ASSET SERIALIZATION
+# Outcome: Persists refined data to high-integrity CSV format.
+# ------------------------------------------------------------------------------
 write_csv(efficiency_audit, "ch3_data_transformation/top_carrier_efficiency.csv")

@@ -39,4 +39,4 @@ The following improvements were implemented to elevate the development environme
 ---
 
 ## Methodology Reference
-Refinements based on *R for Data Science (2e)* by Wickham, Çetinkaya-Rundel, and Grolemund.
+Refinements based on *R for Data Science (2e)* by Wickham, Çetinkaya-Rundel, and Grolemund.e
