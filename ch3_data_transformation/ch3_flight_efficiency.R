@@ -14,7 +14,7 @@ library(tidyverse)
 # Standard: Explicit handling of missing values (NAs) to prevent propagation 
 # in statistical summaries.
 # ------------------------------------------------------------------------------
-efficiency_audit <- flights |> 
+performance_validation <- flights |> 
   filter(
     !is.na(dep_delay), 
     !is.na(arr_delay), 
@@ -53,4 +53,4 @@ arrange(desc(avg_gain))
 # ASSET SERIALIZATION
 # Outcome: Persists refined data to high-integrity CSV format.
 # ------------------------------------------------------------------------------
-write_csv(efficiency_audit, "ch3_data_transformation/top_carrier_efficiency.csv")
+write_csv(performance_validation, "ch3_data_transformation/top_carrier_efficiency.csv")
