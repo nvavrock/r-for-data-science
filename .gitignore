@@ -21,3 +21,6 @@ output/
 # System Junk
 .DS_Store
 Thumbs.db
+
+#A.I.
+guardrails.md
