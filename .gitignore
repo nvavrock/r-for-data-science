@@ -14,7 +14,7 @@
 # Data & Output (Expansion: keep your repo light)
 data/
 output/
-*.csv
+#*.csv
 *.xlsx
 *.rds
 
